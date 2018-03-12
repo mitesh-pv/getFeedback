@@ -10,20 +10,10 @@
     <link rel="icon" href="./resources/images/title.png">    
     <link rel="stylesheet" href="./css/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="./css/css/custom.css">	
-    <style type="text/css">
-    
-    .list-group-item:hover{
-    -webkit-transition: all 0.5s ease-in-out;
-    -webkit-transform: scale(1.1);
-    background: #337AFF;
-}
- 
-  </style>
 </head>
 <body>
   
-  <header>
-      
+  <header>      
       <?php require_once './components/navbar.php'?>
   </header>
    
@@ -31,11 +21,9 @@
         if($_SESSION["username"]==true)
             $user=$_SESSION["username"];
         else
-            header('location: index.php');
-      
-        
-      
+            header('location: index.php');     
     ?>
+    
     <br>
     <br>
     <br>
