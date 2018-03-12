@@ -47,7 +47,7 @@
   <div class="col-4">
   <div class="card">
   <div class="list-group">
-    
+      <!-- new updates added  -->
     <?php
            if($connection=mysqli_connect('localhost','root','','decoders')){
                                         
