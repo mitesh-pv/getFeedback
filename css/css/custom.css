@@ -11,6 +11,11 @@ html{
     background-size: cover;
 }
 
+.can_main_section{
+    padding-top: 8%;
+}
+
+
 .body1{
 	background: url(../../resources/images/img3.jpg);
 	background-size: cover;
@@ -52,7 +57,9 @@ html{
    cursor: pointer;
    pointer-events: all;
  }
-
+.scr{
+    padding-top: 8%;
+}
 #wrapper {
   max-width: 500px;
   margin: auto;
@@ -64,5 +71,23 @@ html{
    
 }
 
+#picId{
+    padding-left: 180px;
+}
 
+.pic{
+
+    height: 200px;
+    width: 200px;
+
+    border-radius: 10px;
+    
+}
+
+.list-group-item:hover{
+    -webkit-transition: all 0.5s ease-in-out;
+    -webkit-transform: scale(1.1);
+    background: #337AFF;
+
+}
 

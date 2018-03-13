@@ -81,7 +81,11 @@
                                 <input type="password" name="password" id="password" class="form-control" placeholder="Enter password">  
                                 <i class="glyphicon glyphicon-eye-open form-control-feedback"></i>                          
                             </div>
-                            <br/>
+                            
+                             <div class="form-group">
+                                <input type="checkbox" name="rem"/> <small for="rem"> Remember Me</small> 
+                             </div>
+                            
                             <div class="form-group wrapper">
                                 <input type="submit" name="submit" class="btn btn-primary btn-block" value="Login"/>                            
                             </div>
@@ -89,9 +93,7 @@
                         
                     </div>                    
                 </div>                    
-             </section>       
-             
-           
+             </section>            
                      
                        
                            
