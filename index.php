@@ -45,7 +45,8 @@
                                 
                                 
                                 if(!($username && $password))
-                                    echo '<div class="alert alert-danger" role="alert">enter username and password</div>';
+                                    echo '<div class="alert alert-dismissible alert-danger fade show" role="alert">enter username and password
+                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>';
                                 else{
                                     
                                     if($connection=mysqli_connect('localhost','root','','decoders')){
@@ -58,15 +59,16 @@
                                             $_SESSION["username"]=$username;
                                             header('location: member.php');
                                         }else{
-                                            echo '<div class="alert alert-danger" role="alert">username or password incorrect</div>';
+                                            echo '<div class="alert alert-dismissible alert-danger fade show" role="alert">username or password incorrect
+                                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></div>';
                                         }                                            
                                         
                                     }                                  
                                     
                                 }
-                            }                           
-                        
+                            }
                         ?>
+                    
                         
                          <form action="index.php" method="post">
                             
