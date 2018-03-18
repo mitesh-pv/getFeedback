@@ -11,6 +11,8 @@ html{
     background-size: cover;
 }
 
+
+
 .can_main_section{
     padding-top: 8%;
 }
@@ -30,6 +32,18 @@ html{
 
 .login-form{
     margin-top: 60px;
+    box-shadow: 0px 0px 10px 1px black;
+/*    border-radius: 5px;*/
+    padding-bottom: 20px;
+    background: white;
+    height: 50%;  
+    width:50%;
+/*    opacity: 0.9;*/
+}
+
+
+.signup-form{
+    margin-top: 20px;
     box-shadow: 0px 0px 10px 1px black;
 /*    border-radius: 5px;*/
     padding-bottom: 20px;
@@ -71,18 +85,48 @@ html{
    
 }
 
+
 #picId{
     padding-left: 180px;
+    
 }
 
+
+
+/*candidate picture dimentions */
 .pic{
 
     height: 200px;
     width: 200px;
-
-    border-radius: 10px;
-    
+    border-radius: 5px;    
 }
+
+/* effects on candidate image*/
+.canPic{
+    position: relative;
+    overflow: hidden;
+    width: 200px;
+}
+
+.canPic img {
+   
+  max-width: 100%;
+  
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.canPic:hover img {
+    
+  cursor: pointer;
+    
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+
 
 .list-group-item:hover{
     -webkit-transition: all 0.5s ease-in-out;
@@ -90,4 +134,15 @@ html{
     background: #337AFF;
 
 }
+
+#logo{
+    align-content: center;
+}
+.signup{
+    text-align:  center;
+}
+.btn1{
+    align-items: center;
+}
+
 

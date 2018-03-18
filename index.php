@@ -1,5 +1,7 @@
 <?php 
     session_start();
+
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,15 +36,15 @@
                     
                     <div class="login-form col-sm-4 offset-sm-4">
                                                                 
-                        <img src="./resources/images/title_2.jpg" alt="decoders_logo" class="scr" id="logo" style="width: 30%; height:70%; border-radius:10px;" >
+                        <img src="./resources/images/title_2.jpg" alt="decoders_logo" class="scr" id="logo" style="width: 30%; height:70%; border-radius:10px cursor: pointer;" >
                          <hr> 
+                        
                         <?php
                         
                             if(isset($_POST['submit'])){
                                 
                                 $username=$_POST['username'];
-                                $password=$_POST['password'];                               
-                                
+                                $password=$_POST['password'];  
                                 
                                 if(!($username && $password))
                                     echo '<div class="alert alert-dismissible alert-danger fade show" role="alert">enter username and password
@@ -51,7 +53,18 @@
                                     
                                     if($connection=mysqli_connect('localhost','root','','decoders')){
                                         
-                                        $query="select * from users where username='$username' && password='$password'";
+                                        //escape the string escape sequence
+                                        $username=mysqli_real_escape_string($connection,$username);
+                                        $password=mysqli_real_escape_string($connection,$password);
+                                        
+                                        $hashFormat="$2y$10$";
+                                        $salt="KLMNOPCBARQPZYXPOIUYRT";
+                                        $hash_and_salt=$hashFormat . $salt;
+                                            
+                                        $encriptPass=crypt($password,$hash_and_salt);
+                                        
+                                        
+                                        $query="select * from users where username='$username' && password='$encriptPass'";
                                         $result=mysqli_query($connection,$query);
                                         $rowcount=mysqli_num_rows($result);
                                         
@@ -67,8 +80,10 @@
                                     
                                 }
                             }
-                        ?>
-                    
+                        
+                   
+                            
+                        ?>                    
                         
                          <form action="index.php" method="post">
                             
@@ -85,13 +100,16 @@
                             </div>
                             
                              <div class="form-group">
-                                <input type="checkbox" name="rem"/> <small for="rem"> Remember Me</small> 
+                                <input type="checkbox" name="rem"/> <small for="rem" <?php if(isset($_COOKIE["member_login"])) { ?> checked <?php } ?>> Remember Me</small> 
                              </div>
                             
                             <div class="form-group wrapper">
                                 <input type="submit" name="submit" class="btn btn-primary btn-block" value="Login"/>                            
                             </div>
-                        </form>                       
+                        </form>
+                        
+                        <a href="admin.php" class="badge badge-secondary">Admin</a>
+                        
                         
                     </div>                    
                 </div>                    

@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $user=$_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,28 +36,27 @@
   <div class="col-4">
   <div class="card">
   <div class="list-group">
+     
       <!-- new updates added  -->
-    <?php
-           if($connection=mysqli_connect('localhost','root','','decoders')){
+            <?php
+           
+            if($connection=mysqli_connect('localhost','root','','decoders')){
                                         
-               $query="select name from candidate";
+                    $query="select name from candidate";
                     $result=mysqli_query($connection,$query);
                     $rowcount=mysqli_num_rows($result);
                     
 
                     if (mysqli_num_rows($result) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($result)) {
+                        // output data of each row
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $canName=$row["name"];        
       ?>
 
-      <a href="#" class="list-group-item list-group-item-action ">
-      <?php
-        echo  $row["name"];
-        ?>
-
-        </a>
+      <a href="candidate.php?candidateName=<?php echo $canName;?>" class="list-group-item list-group-item-action "><?php echo  $canName;?></a>
         <?php
-    }
+                        }
+                        
                   /*  while($fieldinfo=mysqli_fetch_field($result))
                     {
                      echo $fieldinfo["name"];
@@ -64,8 +64,10 @@
                     }*/
                                         
 
-            }
-          }
+                    }
+                
+                
+              } 
 
     ?>  
    

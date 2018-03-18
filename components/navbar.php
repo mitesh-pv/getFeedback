@@ -8,7 +8,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown dropdown1">
-                         <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php /*echo ucfirst($_SESSION["username"])*/?>Log</a> 
+                         <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ucfirst($_SESSION["username"])?>Log</a> 
                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <a class="dropdown-item" href="logout.php">logout</a>
                               <a class="dropdown-item disable" href="#">More</a>
