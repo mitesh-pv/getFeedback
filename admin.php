@@ -76,7 +76,7 @@
                                                 
                                                 $_SESSION["username"]=$username;
                                                 
-                                                header("Refresh: 1.5; url=candidate.php");
+                                                header("Refresh: 1.5; url=member.php");
                                             }
                                         }                                                                    
                                     }

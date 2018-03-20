@@ -60,7 +60,7 @@ $user=$_SESSION["username"];
                    <hr style="width: 100% left-padding: 20%">
                     <div class="row">                    
                         <div class="col-sm-8">
-                          <form>
+                          <form method-"GET" action="candidate.php">
                             <div class="jumbotron box1" style="border-radius: 0px;">
                                   
                                   <div class="form-group row">
@@ -89,6 +89,43 @@ $user=$_SESSION["username"];
                                   </div>                          
                             </div>   
                                <hr style="width: 100% left-padding: 20%">
+                                
+                            <!-- dropdown for review      -->
+                           
+                             <div class="" id="newId">
+                                
+                                    <div class="btn-group" id="dropdown">
+                                      <button type="button" name="act" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Review
+                                      </button>
+                                      <?php $value=0;?>
+                                      <div class="dropdown-menu">
+                                        <a class="dropdown-item" value="<?php $value =1;?>"  >selected</a>
+                                        <a class="dropdown-item" value="<?php $value= 2;?>" onclick="muFunct()" >Forwarded</a>
+                                        <a class="dropdown-item" value="<?php $value =3;?>"  >Rejected</a>
+                                      </div>
+                                    </div>
+                                </div>
+                                <script>
+                                    function myFunct(){
+                                         document.getElementById('newId').innerHTML += '<div id="idChild"> content html </div>';
+                                    }
+                                </script>        
+                                    
+                           
+                           
+                            
+                            
+
+                            <!-- dropdown for review      -->
+                                <hr style="width: 100% left-padding: 20%">
+                                 
+                               <div class="form-group">
+                                    <label for="comments">Comments:</label>
+                                   <div class="comment-box"><textarea class="form-control" id="comments" rows="3" placeholder="enter comments here..."></textarea></div>
+                                </div>
+                                 
+                                 
                                   
                             </form>                           
                         </div>
@@ -113,7 +150,7 @@ $user=$_SESSION["username"];
                         <h5 class="card-title"><?php echo $canName;?></h5>
                         <span ><i class="icon-envelope icon-search"></i></span><a class="u-email" ></a>
                            <svg  for="mail" class="octicon octicon-mail" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"></path></svg>
-                        <a class="card-text " id="mail" href="mailto: <?php echo $canEmail;?>">&nbsp&nbsp<?php echo $canEmail;?></a>
+                        <a class="card-text " id="mail" href="mailto: <?php echo $canEmail;?>"><?php echo $canEmail;?></a>
                         <div>
                             <a href="./resources/resumes/<?php echo $canResume;?>" download class="btn btn-primary" style="margin-top: 10px;">Download Resume</a>
                         </div>
