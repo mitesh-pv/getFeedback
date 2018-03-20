@@ -60,7 +60,7 @@ $user=$_SESSION["username"];
                    <hr style="width: 100% left-padding: 20%">
                     <div class="row">                    
                         <div class="col-sm-8">
-                          <form method-"GET" action="candidate.php">
+                          <form method="get" action="candidate.php">
                             <div class="jumbotron box1" style="border-radius: 0px;">
                                   
                                   <div class="form-group row">
@@ -91,27 +91,25 @@ $user=$_SESSION["username"];
                                <hr style="width: 100% left-padding: 20%">
                                 
                             <!-- dropdown for review      -->
-                           
-                             <div class="" id="newId">
-                                
+                                                  
+                                <div class="dropdownMenu">
                                     <div class="btn-group" id="dropdown">
-                                      <button type="button" name="act" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <button type="button" name="act" class="btn btn-info dropdown-toggle btn1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Review
                                       </button>
                                       <?php $value=0;?>
-                                      <div class="dropdown-menu">
-                                        <a class="dropdown-item" value="<?php $value =1;?>"  >selected</a>
-                                        <a class="dropdown-item" value="<?php $value= 2;?>" onclick="muFunct()" >Forwarded</a>
-                                        <a class="dropdown-item" value="<?php $value =3;?>"  >Rejected</a>
+                                      <div class="dropdown-menu dropdown-menu1" id="dropdownItem">
+                                        <a class="dropdown-item" value="<?php $value =1;?>"  id="sel">selected</a>
+                                        <a class="dropdown-item" value="<?php $value= 2;?>" id="for" >Forwarded</a>
+                                        <a class="dropdown-item" value="<?php $value =3;?>"  id="rej">Reject</a>
                                       </div>
-                                    </div>
-                                </div>
-                                <script>
-                                    function myFunct(){
-                                         document.getElementById('newId').innerHTML += '<div id="idChild"> content html </div>';
-                                    }
-                                </script>        
+                                    </div>&nbsp&nbsp&nbsp&nbsp&nbsp
                                     
+                                </div>
+                                
+                              
+                              
+                                  
                            
                            
                             
@@ -124,6 +122,18 @@ $user=$_SESSION["username"];
                                     <label for="comments">Comments:</label>
                                    <div class="comment-box"><textarea class="form-control" id="comments" rows="3" placeholder="enter comments here..."></textarea></div>
                                 </div>
+                                
+                                <hr style="width: 100% left-padding: 20%">
+                                <div class="dropdownMenu1">
+                                    <div class="btn-group" id="dropdown1">
+                                      <button type="button" name="act" class="btn btn-info dropdown-toggle btn3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Second Interviewer
+                                      </button>
+                                      <div class="dropdown-menu dropdown-menu3" id="dropdownItem">
+                                      <?php getUsers($user);?>
+                                      </div>                                   
+                                </div>
+                              </div>
                                  
                                  
                                   
@@ -173,9 +183,77 @@ $user=$_SESSION["username"];
         
     </footer>
     <!-- footer   -->
+<?php
+    
+    function getUsers($user){
+        if($connection1=mysqli_connect('localhost','root','','decoders')){                
+                   
+                                        
+                    $query1="SELECT * FROM users where username<>'$user'";
+                    $result1=mysqli_query($connection1,$query1);
+                    $rowcount=mysqli_num_rows($result1);
+                    
+
+                    if (mysqli_num_rows($result1) > 0) {
+                        // output data of each row
+                        while($row1 = mysqli_fetch_assoc($result1)) {
+                            $name=$row1["username"];                           
+                            echo '<a class="dropdown-item" value="<?php $value= 2;?>" id="for" >'.$name.'</a>';
+                        }
+      
+                    }
+       }
+    }
+    
+?>
+    
+    
     
 <!--scripts-->
 <?php require_once './components/scripts.php'?>
+<script>
+$(document).ready(function(){
+    $("#for").click(function(){
+         $(".dropdownMenu").append('<div class="btn-group" id="dropdown"><button type="button" name="act" class="btn btn-info dropdown-toggle btn2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Forward To</button><div class="dropdown-menu dropdown-menu2" id="dropdownItem"><?php getUsers($user);?><div></div>');
+        
+    });
+});
+</script>
+
+<script>
+ $(function(){
+
+    $(".dropdown-menu1 a").click(function(){
+
+      $(".btn1:first-child").text($(this).text());
+      $(".btn1:first-child").val($(this).text());
+
+   });
+
+});
+$(function(){
+
+    $(".dropdown-menu2 a").click(function(){
+
+      $(".btn2:first-child").text($(this).text());
+      $(".btn2:first-child").val($(this).text());
+
+   });
+
+});
+$(function(){
+
+    $(".dropdown-menu3 a").click(function(){
+
+      $(".btn3:first-child").text($(this).text());
+      $(".btn3:first-child").val($(this).text());
+
+   });
+
+});
+
+</script>
 <!--scripts-->
+
 </body>
 </html>

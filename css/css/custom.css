@@ -84,7 +84,12 @@ html{
 
 .dropdown1:hover .dropdown-menu {
     display: block;
+    cursor :pointer;
    
+}
+
+.dropdown-item{
+    cursor: pointer;
 }
 
 
